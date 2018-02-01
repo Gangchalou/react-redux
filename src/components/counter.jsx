@@ -1,21 +1,17 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
-import {connect} from 'react-redux'
 
-import {increment,decrement} from '../redux/actions'
- class App extends Component {
-
+export default class Counter extends Component {
     //声明属性
     static propTypes = {
         count:PropTypes.number.isRequired,
         increment:PropTypes.func.isRequired,
         decrement:PropTypes.func.isRequired,
-
     }
 
     increment = ()=>{
         const num = this.select.value*1 //转移为字符串
-       this.props.store.increment(num)
+       this.props.increment(num)
     }
     decrement = ()=>{
         const num = this.select.value*1 //转移为字符串
@@ -25,7 +21,7 @@ import {increment,decrement} from '../redux/actions'
     }
     incrementOdd = ()=>{
         const num = this.select.value*1 //转移为字符串
-        const count = this.props.store.getState()
+        const count = this.props.count
         if(count%2 ===1){
             // this.setState ({count:count+num})
             this.props.increment(num)
@@ -61,7 +57,3 @@ import {increment,decrement} from '../redux/actions'
   }
 }
 
-export default connect (    //接受一个组件类，返回新的组件
-    state=>({count:state}),
-    {increment,decrement}
-)(App)

@@ -2,15 +2,15 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import {Provider} from  'react-redux'
 
-import App from './components/app'
+import App from './containers/app'
 import store from './redux/store'
 
 
 //生成一个store对象
     ReactDOM.render(
         (
-            <Provider>
-                <App store={store}/>
+            <Provider store={store}>
+                <App />
             </Provider>
         ),
         document.getElementById('root')
